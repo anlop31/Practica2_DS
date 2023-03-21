@@ -36,6 +36,14 @@ al observador las cantidades
         _compuestosVendidos = 0;
     }
 
+    bool estaCerrada = false;
+
+    // Otros métodos de la clase...
+
+    bool estaAbierta() {
+        return !estaCerrada;
+    }
+
     void inicializarProductos() {
     //Genera las cantidades de productos de cada tipo
     //y añade dicha cantidad de productos al arraylist correspondiente
@@ -43,10 +51,10 @@ al observador las cantidades
         _nCompuestos = rand.nextInt(20) + 10;
         _nProd = _nSimples + _nCompuestos;
 
-        Future.microtask(() {
+        //Future.microtask(() {
             //?????????????????????????????????????????
             notifyObservers(this);
-        });
+        //});
 
         for (int i = 0; i < _nSimples; i++) {
             this.stockSimples.add(ProductoSimple());
@@ -161,6 +169,8 @@ void run(){
                         
         _nProd = _nSimples + _nCompuestos;
     }
+
+    estaCerrada = true;
 
 }
 

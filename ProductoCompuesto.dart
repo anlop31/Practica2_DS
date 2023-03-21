@@ -1,12 +1,18 @@
 import 'Producto.dart';
+import 'ProductoSimple.dart';
 
 class ProductoCompuesto extends Producto {
-  List<Producto> productos;
-  int componentes;
+  List<Producto> productos = [new ProductoSimple()];
+  int componentes = 0;
 
-  ProductoCompuesto()
-      : productos = List<Object>(),
-        componentes = 0,
+//   ProductoCompuesto()
+//       : productos = List<Object>(),
+//         componentes = 0,
+//         ProductoSimple producto = new ProductoSimple(),
+//         productos.add(producto),
+//         super();
+
+    ProductoCompuesto() :
         super();
 
   void anadirProducto(Producto prod) {

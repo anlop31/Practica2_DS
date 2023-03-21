@@ -9,8 +9,8 @@ class Encargado implements Observer<Panaderia> {
     int _nCompuestos = 0;
     int _simplesVendidos = 0;
     int _compuestosVendidos = 0;
-    String _mensajeSimples = "";
-    String _mensajeCompuestos = "";
+    String mensajeSimples = "";
+    String mensajeCompuestos = "";
 
     Encargado() {
         _precioCestas = 0;
@@ -19,8 +19,8 @@ class Encargado implements Observer<Panaderia> {
         _nCompuestos = 0;
         _simplesVendidos = 0;
         _compuestosVendidos = 0;
-        _mensajeSimples = "NADA";
-        _mensajeCompuestos = "NADA";
+        mensajeSimples = "NADA";
+        mensajeCompuestos = "NADA";
     }
 
     void update(Observable o) {
@@ -35,12 +35,14 @@ class Encargado implements Observer<Panaderia> {
         _simplesVendidos = panaderia.getSimplesVendidos();
         _compuestosVendidos = panaderia.getCompuestosVendidos();
 
-        _mensajeSimples = "El número de panes en stock es" + _nSimples.toString() + "y ya se han vendido" + _simplesVendidos.toString();
-        _mensajeCompuestos = "El número de cestas en stock es $_nCompuestos y ya se han vendido $_compuestosVendidos";
+        mensajeSimples = "El número de panes en stock es" + _nSimples.toString() + " y ya se han vendido" + _simplesVendidos.toString();
+        mensajeCompuestos = "El número de cestas en stock es $_nCompuestos y ya se han vendido $_compuestosVendidos";
 
+        print(mensajeSimples);
+        print(mensajeCompuestos);
     }
 
     String getStock(){
-        return ("Supervisor --> " + _mensajeSimples + _mensajeCompuestos);
+        return ("Supervisor --> " + mensajeSimples + mensajeCompuestos);
     }
 }
