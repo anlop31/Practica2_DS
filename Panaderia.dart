@@ -42,7 +42,12 @@ al observador las cantidades
     // Otros métodos de la clase...
 
     bool estaAbierta() {
+        print("en esta abierta estacerrada es $estaCerrada");
         return !estaCerrada;
+    }
+
+    void setCerrada(bool b){
+      estaCerrada = b;
     }
 
     void inicializarProductos() {
@@ -54,7 +59,7 @@ al observador las cantidades
 
         //Future.microtask(() {
             //?????????????????????????????????????????
-            notifyObservers(this);
+        notifyObservers(this);
         //});
 
         for (int i = 0; i < _nSimples; i++) {
@@ -115,7 +120,7 @@ al observador las cantidades
         }
         Future.delayed(const Duration(), () {
             //setChanged();
-            notifyObservers(this);
+        //    notifyObservers(this);
         });
     }
 
@@ -141,7 +146,7 @@ al observador las cantidades
         }
         Future.delayed(const Duration(), () {
             //setChanged();
-            notifyObservers(this);
+        //    notifyObservers(this);
         });
     } 
 
@@ -155,23 +160,25 @@ al observador las cantidades
         }
     }
 
-void run(){
+void run() async{
     //Cada cierto tiempo (instante) se vende una serie de productos 
     //(cantidad) de un tipo u otro (tipo)
-    while (_nProd > 0){
+   // while (_nProd > 0){
         //this.setChanged();
         int instante = Random().nextInt(5000)+1000;
         int tipo = Random().nextInt(2);
         int cantidad = Random().nextInt(4)+1;
+        //print(instante);
+        await Future.delayed(Duration(seconds:instante));
+        //print("llegamos a vender $instante");
+        venderProducto(tipo, cantidad);
+        
 
-        Future.delayed(Duration(seconds: instante), () {
-            venderProducto(tipo, cantidad);
-        });
-                        
         _nProd = _nSimples + _nCompuestos;
-    }
+    //}
+    //print("llega al cambio");
 
-    estaCerrada = true;
+    setCerrada(true);
 
 }
 
