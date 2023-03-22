@@ -3,7 +3,7 @@ import 'Analista.dart';
 import 'Encargado.dart';
 import 'dart:async';
 
-void main() async{
+Future<void> main() async{
     Panaderia panaderia = new Panaderia();
 
     Encargado encargado = new Encargado();
@@ -47,14 +47,14 @@ void main() async{
     }
 
     // Configurar un temporizador para marcar un tiempo límite para la panadería
-    Timer(Duration(seconds: 30), marcarPanaderiaCerrada);
+    Timer(Duration(seconds: 40), marcarPanaderiaCerrada);
 
     // Ejecutar un proceso mientras la instancia de Future esté activa
     do {
         // print('Esperando a que la panadería esté lista para usarse...');
         // Agregar aquí el código que deseas ejecutar mientras la panadería esté activa
         
-        panaderia.run();
+         await panaderia.run();
         //print("ha acabado el run");
         //await Future.delayed(Duration(seconds:5));
 

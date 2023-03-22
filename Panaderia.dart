@@ -34,12 +34,10 @@ al observador las cantidades
         observadores = [];
         _simplesVendidos = 0;
         _compuestosVendidos = 0;
-        inicializarProductos();
+        inicializarProductos(); // se ejecuta 2 veces, por que?
     }
 
     bool estaCerrada = false;
-
-    // Otros métodos de la clase...
 
     bool estaAbierta() {
         //print("en esta abierta estacerrada es $estaCerrada");
@@ -59,7 +57,7 @@ al observador las cantidades
 
         //Future.microtask(() {
             //?????????????????????????????????????????
-        notifyObservers(this);
+        //notifyObservers(this);
         //});
 
         for (int i = 0; i < _nSimples; i++) {
@@ -70,7 +68,7 @@ al observador las cantidades
             this.stockCompuestos.add(ProductoCompuesto());
         }
 
-        print("Se inicializa con " + _nSimples.toString() + " productos simples y " + _nCompuestos.toString() + " compuestos.");
+        print("Se inicializa con " + _nSimples.toString() + " productos simples y " + _nCompuestos.toString() + " compuestos. Total: " + _nProd.toString());
     }
 
     void adscribir(Observer observador) {
@@ -110,18 +108,20 @@ al observador las cantidades
                 _simplesVendidos += n;
                 for (int i = 0; (i < n) && stockSimples.isNotEmpty; i++){
                     stockSimples.removeLast();
+                    print("stockSimples.removeLast()");
                 }
                 _nSimples -= n;
-                print("$n panes vendidos y quedan $_nSimples == ${stockSimples.length}");
+                print("$n panes vendidos y quedan $_nSimples == ${stockSimples.length}, nSimples: $_nSimples");
+                print("quedan en total: $_nProd");
             }
             else{
             print("No hay suficientes panes");
             }
         }
-        Future.delayed(const Duration(), () {
+        //Future.delayed(const Duration(), () {
             //setChanged();
         //    notifyObservers(this);
-        });
+        //});
     }
 
 
@@ -138,16 +138,17 @@ al observador las cantidades
                     stockCompuestos.removeLast();
                 }
                 _nCompuestos -= n;
-                print("$n cestas vendidas y quedan $_nCompuestos == ${stockCompuestos.length}");
+                print("$n cestas vendidas y quedan $_nCompuestos == ${stockCompuestos.length}, nCompuestos: $_nCompuestos");
+                print("quedan en total: $_nProd");
             }
             else{
                 print("No hay suficientes cestas");
             }
         }
-        Future.delayed(const Duration(), () {
+        //Future.delayed(const Duration(), () {
             //setChanged();
         //    notifyObservers(this);
-        });
+        //});
     } 
 
     void venderProducto(int tipo, int cantidad){
@@ -160,24 +161,26 @@ al observador las cantidades
         }
     }
 
-void run() async{
+Future<void> run() async{
     //Cada cierto tiempo (instante) se vende una serie de productos 
     //(cantidad) de un tipo u otro (tipo)
-    while (_nProd > 0){
+    if (_nProd > 0){ // si hay productos, vende
         //this.setChanged();
-        int instante = Random().nextInt(5000)+1000;
-        int tipo = Random().nextInt(2);
-        int cantidad = Random().nextInt(4)+1;
+        int instante = rand.nextInt(5);
+        int tipo = rand.nextInt(2);
+        int cantidad = rand.nextInt(4)+1;
+        print("Antes del instante " + instante.toString());
         await Future.delayed(Duration(seconds:instante));
-        print("llegamos a vender $instante");
+        print("llegamos a vender, instante: $instante");
         venderProducto(tipo, cantidad);
         
     
         _nProd = _nSimples + _nCompuestos;
     }
-    //print("llega al cambio");
-
-    setCerrada(true);
+    else{ // si no hay productos, cierra la panaderia
+      setCerrada(true);
+      print("SE CIERRA LA PANADERIA.");
+    }
 
 }
 
