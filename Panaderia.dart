@@ -108,11 +108,9 @@ al observador las cantidades
                 _simplesVendidos += n;
                 for (int i = 0; (i < n) && stockSimples.isNotEmpty; i++){
                     stockSimples.removeLast();
-                    print("stockSimples.removeLast()");
                 }
                 _nSimples -= n;
-                print("$n panes vendidos y quedan $_nSimples == ${stockSimples.length}, nSimples: $_nSimples");
-                print("quedan en total: $_nProd");
+                print("$n panes vendidos y quedan $_nSimples == ${stockSimples.length}");
             }
             else{
             print("No hay suficientes panes");
@@ -138,8 +136,7 @@ al observador las cantidades
                     stockCompuestos.removeLast();
                 }
                 _nCompuestos -= n;
-                print("$n cestas vendidas y quedan $_nCompuestos == ${stockCompuestos.length}, nCompuestos: $_nCompuestos");
-                print("quedan en total: $_nProd");
+                print("$n cestas vendidas y quedan $_nCompuestos == ${stockCompuestos.length}");
             }
             else{
                 print("No hay suficientes cestas");
@@ -169,11 +166,10 @@ Future<void> run() async{
         int instante = rand.nextInt(5);
         int tipo = rand.nextInt(2);
         int cantidad = rand.nextInt(4)+1;
-        print("Antes del instante " + instante.toString());
+        // print("Antes del instante ");
         await Future.delayed(Duration(seconds:instante));
-        print("llegamos a vender, instante: $instante");
+        // print("Llegamos a vender (segundos: $instante)");
         venderProducto(tipo, cantidad);
-        
     
         _nProd = _nSimples + _nCompuestos;
     }
