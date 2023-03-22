@@ -163,7 +163,7 @@ Future<void> run() async{
     //(cantidad) de un tipo u otro (tipo)
     if (_nProd > 0){ // si hay productos, vende
         //this.setChanged();
-        int instante = rand.nextInt(5);
+        int instante = rand.nextInt(4)+1;
         int tipo = rand.nextInt(2);
         int cantidad = rand.nextInt(4)+1;
         // print("Antes del instante ");
