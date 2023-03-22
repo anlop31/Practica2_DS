@@ -53,7 +53,9 @@ void main() async{
     do {
         // print('Esperando a que la panadería esté lista para usarse...');
         // Agregar aquí el código que deseas ejecutar mientras la panadería esté activa
+        
         panaderia.run();
+        await Future.delayed(Duration(seconds:5));
 
         encargado.update(panaderia);
         // Comprobar si el futuro ha sido completado y si la panadería sigue abierta

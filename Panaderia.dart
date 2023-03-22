@@ -34,6 +34,7 @@ al observador las cantidades
         observadores = [];
         _simplesVendidos = 0;
         _compuestosVendidos = 0;
+        inicializarProductos();
     }
 
     bool estaCerrada = false;
