@@ -42,7 +42,7 @@ al observador las cantidades
     // Otros métodos de la clase...
 
     bool estaAbierta() {
-        print("en esta abierta estacerrada es $estaCerrada");
+        //print("en esta abierta estacerrada es $estaCerrada");
         return !estaCerrada;
     }
 
@@ -163,19 +163,18 @@ al observador las cantidades
 void run() async{
     //Cada cierto tiempo (instante) se vende una serie de productos 
     //(cantidad) de un tipo u otro (tipo)
-   // while (_nProd > 0){
+    while (_nProd > 0){
         //this.setChanged();
         int instante = Random().nextInt(5000)+1000;
         int tipo = Random().nextInt(2);
         int cantidad = Random().nextInt(4)+1;
-        //print(instante);
         await Future.delayed(Duration(seconds:instante));
-        //print("llegamos a vender $instante");
+        print("llegamos a vender $instante");
         venderProducto(tipo, cantidad);
         
-
+    
         _nProd = _nSimples + _nCompuestos;
-    //}
+    }
     //print("llega al cambio");
 
     setCerrada(true);

@@ -58,7 +58,7 @@ void main() async{
         //print("ha acabado el run");
         //await Future.delayed(Duration(seconds:5));
 
-        encargado.update(panaderia);
+        //encargado.update(panaderia);
         // Comprobar si el futuro ha sido completado y si la panadería sigue abierta
         //print((await futurePanaderia).estaAbierta());
     } while (!completer.isCompleted && (await futurePanaderia).estaAbierta());
