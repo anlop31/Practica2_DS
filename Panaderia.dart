@@ -4,7 +4,6 @@ import 'Producto.dart';
 import 'Observer.dart';
 import 'ProductoCompuesto.dart';
 import 'ProductoSimple.dart';
-import 'dart:isolate';
 
 class Panaderia extends Observable{
 /*
@@ -91,7 +90,7 @@ al observador las cantidades
 
         //Future.microtask(() {
             //?????????????????????????????????????????
-        //notifyObservers(this);
+        notifyObservers(this);
         //});
 
         for (int i = 0; i < _nSimples; i++) {

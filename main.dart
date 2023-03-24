@@ -9,34 +9,6 @@ Future<void> main() async{
     Encargado encargado = new Encargado();
     Analista analista = new Analista();
 
-    
-    // Threads (Futures)
-    // Future<Panaderia> future = new Future(() {
-    //   return panaderia;
-    // });
-
-    // Future<Panaderia> future = Future(() => Panaderia());
-
-    // Añadimos los observadores a la panaderia
-    /* Analista se suscribe a la panaderia */
-    //panaderia.adscribir(analista);
-
-    //panaderia.adscribir(encargado);
-
-
-    // do {
-    //     print("Panaderia en uso");
-
-    //     await Future.value();
-
-    //     if(panaderia.getNSimples() + panaderia.getNCompuestos() == 0){
-    //         future = null;
-    //     }
-    // } while(future != null);
-
-    // para pararlo future = null; con un if nProd = 0
-
-
     Future<Panaderia> futurePanaderia = Future(() => Panaderia());
     // Creando bakery asi conseguimos que no se inicialice 2 veces
     Panaderia bakery = await futurePanaderia;

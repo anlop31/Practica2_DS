@@ -31,7 +31,6 @@ class Analista extends Observer<Panaderia> {
         for (int i = 0; i < 7; i++) {
             _ventasTotales.add(0);
         }
-
     }
 
     @override
@@ -87,9 +86,12 @@ class Analista extends Observer<Panaderia> {
             _simplesVendidos = panaderia.getSimplesVendidos();
             _compuestosVendidos = panaderia.getCompuestosVendidos();
 
-            _mensajeSimples = "El numero de panes en stock es " + _nSimples.toString()  + "y ya se han vendido " + _simplesVendidos.toString();
-            _mensajeCompuestos = "El numero de panes en stock es " + _nCompuestos.toString() + "y ya se han vendido " + _compuestosVendidos.toString();
-        }   
+            _mensajeSimples = "(Analista) El numero de panes en stock es " + _nSimples.toString()  + " y ya se han vendido " + _simplesVendidos.toString();
+            _mensajeCompuestos = "(Analista) El numero de cestas en stock es " + _nCompuestos.toString() + " y ya se han vendido " + _compuestosVendidos.toString();
+
+            print(_mensajeSimples);
+            print(_mensajeCompuestos);
+        }
     }
 
     String getStock(){
