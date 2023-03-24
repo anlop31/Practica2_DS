@@ -37,6 +37,40 @@ al observador las cantidades
         inicializarProductos(); // se ejecuta 2 veces, por que?
     }
 
+    //Getters  
+    int getNSimples(){
+        return _nSimples;
+    }
+
+    int getNCompuestos(){
+        return _nCompuestos;
+    }
+
+    int getSimplesVendidos(){
+        return _simplesVendidos;
+    }
+
+    int getCompuestosVendidos(){
+        return _compuestosVendidos;
+    }
+
+    void setNSimples(int n){
+        this._nSimples = n;
+    }
+
+    void setNCompuestos(int n){
+        this._nCompuestos = n;
+    }
+
+    void setSimplesVendidos(int n){
+        this._simplesVendidos = n;
+    }
+
+    void setCompuestosVendidos(int n){
+        this._compuestosVendidos = n;
+    }
+
+
     bool estaCerrada = false;
 
     bool estaAbierta() {
@@ -81,23 +115,6 @@ al observador las cantidades
     }
 
 
-    //Getters  
-    int getNSimples(){
-        return _nSimples;
-    }
-
-    int getNCompuestos(){
-        return _nCompuestos;
-    }
-
-    int getSimplesVendidos(){
-        return _simplesVendidos;
-    }
-
-    int getCompuestosVendidos(){
-        return _compuestosVendidos;
-    }
-
     void venderSimple(int n){
         if (_nSimples <= 0){ // si no quedan simples
             _nSimples = 0;
@@ -118,7 +135,7 @@ al observador las cantidades
         }
         //Future.delayed(const Duration(), () {
             //setChanged();
-        //    notifyObservers(this);
+            notifyObservers(this);
         //});
     }
 
@@ -144,7 +161,7 @@ al observador las cantidades
         }
         //Future.delayed(const Duration(), () {
             //setChanged();
-        //    notifyObservers(this);
+            notifyObservers(this);
         //});
     } 
 

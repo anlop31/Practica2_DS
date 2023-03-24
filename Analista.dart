@@ -3,7 +3,7 @@
 
 //import 'package:flutter/material.dart';
 
-import 'panaderia.dart';
+import 'Panaderia.dart';
 import 'Observer.dart';
 
 class Analista extends Observer<Panaderia> {
@@ -41,7 +41,16 @@ class Analista extends Observer<Panaderia> {
             Future.delayed(Duration(milliseconds: 500));
         } catch (ex) {}
 
-        Panaderia panaderia = o as Panaderia; 
+        Panaderia panaderia = new Panaderia();
+        int nSimples = (o as Panaderia).getNSimples();
+        int nCompuestos = (o as Panaderia).getNCompuestos();
+        int simplesVendidos = (o as Panaderia).getSimplesVendidos();
+        int compuestosVendidos = (o as Panaderia).getCompuestosVendidos();
+        panaderia.setNSimples(nSimples);
+        panaderia.setNCompuestos(nCompuestos);
+        panaderia.setSimplesVendidos(simplesVendidos);
+        panaderia.setCompuestosVendidos(compuestosVendidos);
+        
         _suma = 0;
         int vendidos = (_nSimples+_nCompuestos) - ( panaderia.getNSimples()+panaderia.getNCompuestos() );
 
