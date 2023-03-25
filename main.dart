@@ -4,18 +4,19 @@ import 'Encargado.dart';
 import 'dart:async';
 
 Future<void> main() async{
-    //Panaderia panaderia = new Panaderia();
-
+    // Observadores
     Encargado encargado = new Encargado();
     Analista analista = new Analista();
 
+    // Observable y completer
     Future<Panaderia> futurePanaderia = Future(() => Panaderia());
-    // Creando bakery asi conseguimos que no se inicialice 2 veces
-    Panaderia bakery = await futurePanaderia;
+    Panaderia panaderia = await futurePanaderia;
+    panaderia.inicializarProductos();
     Completer completer = Completer();
 
-    bakery.addObserver(analista);
-    bakery.addObserver(encargado);
+    // añadimos los observadores a la panaderia
+    panaderia.addObserver(analista);
+    panaderia.addObserver(encargado);
 
     // Función que marca la panadería como cerrada
     void marcarPanaderiaCerrada() {
@@ -28,12 +29,9 @@ Future<void> main() async{
 
     // Ejecutar un proceso mientras la instancia de Future esté activa
     do {
-        // print('Esperando a que la panadería esté lista para usarse...');
-        // Agregar aquí el código que deseas ejecutar mientras la panadería esté activa
-        
-         await bakery.run();
+        await panaderia.run();
+        encargado.update(panaderia);
 
-        //encargado.update(panaderia);
         // Comprobar si el futuro ha sido completado y si la panadería sigue abierta
         //print((await futurePanaderia).estaAbierta());
     } while (!completer.isCompleted && (await futurePanaderia).estaAbierta());

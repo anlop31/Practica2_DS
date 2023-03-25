@@ -33,7 +33,7 @@ al observador las cantidades
         observadores = [];
         _simplesVendidos = 0;
         _compuestosVendidos = 0;
-        inicializarProductos(); // se ejecuta 2 veces, por que?
+        // inicializarProductos(); // se ejecuta 2 veces, por que?
     }
 
     //Getters  
@@ -82,8 +82,8 @@ al observador las cantidades
     }
 
     void inicializarProductos() {
-    //Genera las cantidades de productos de cada tipo
-    //y añade dicha cantidad de productos al arraylist correspondiente
+        //Genera las cantidades de productos de cada tipo
+        //y añade dicha cantidad de productos al arraylist correspondiente
         _nSimples = rand.nextInt(20) + 10;
         _nCompuestos = rand.nextInt(20) + 10;
         _nProd = _nSimples + _nCompuestos;
@@ -182,9 +182,7 @@ Future<void> run() async{
         int instante = rand.nextInt(4)+1;
         int tipo = rand.nextInt(2);
         int cantidad = rand.nextInt(4)+1;
-        // print("Antes del instante ");
         await Future.delayed(Duration(seconds:instante));
-        // print("Llegamos a vender (segundos: $instante)");
         venderProducto(tipo, cantidad);
     
         _nProd = _nSimples + _nCompuestos;
